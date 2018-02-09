@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     ImageView imageView;
-    EditText displayName,FirstName,LastName,DateOfBirth;
+    EditText displayName,FirstName,LastName,DateOfBirth,PhoneNumber;
     Button button;
     Uri uriProfileImage;
     ProgressBar progressbar,progressbarButton;
@@ -89,6 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
         FirstName = (EditText) findViewById(R.id.firstName);
         LastName = (EditText) findViewById(R.id.lastName);
         DateOfBirth = (EditText) findViewById(R.id.Birthday);
+        PhoneNumber = (EditText) findViewById(R.id.phoneNumber);
         imageView = (ImageView) findViewById(R.id.imageViewCamera);
         button = (Button) findViewById(R.id.buttonSave);
         progressbar = (ProgressBar) findViewById(R.id.progressBarProfile);
@@ -104,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        loadUserInfo();
+       // loadUserInfo();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +188,7 @@ public class ProfileActivity extends AppCompatActivity {
         DatabaseReference LastNameRef = mdatabase.child(user_id).child("Last Name");
         DatabaseReference DeptNameRef= mdatabase.child(user_id).child("Department Name");
         DatabaseReference BirthDayRef= mdatabase.child(user_id).child("Birthday");
+        final DatabaseReference PhoneNumRef= mdatabase.child(user_id).child("Phone Number");
 
         if(user != null){
 
@@ -266,7 +268,7 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
 
-
+         //BirthDay Load
             BirthDayRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -274,6 +276,22 @@ public class ProfileActivity extends AppCompatActivity {
                     String bday = dataSnapshot.getValue(String.class);
                     DateOfBirth.setText(bday);
 
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            //Phone number Load
+
+            PhoneNumRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    String number = dataSnapshot.getValue(String.class);
+                    PhoneNumber.setText(number);
                 }
 
                 @Override
@@ -317,6 +335,7 @@ public class ProfileActivity extends AppCompatActivity {
         String name = displayName.getText().toString().trim();
         String Fstname = FirstName.getText().toString().trim();
         String Lstname = LastName.getText().toString().trim();
+        String number = PhoneNumber.getText().toString().trim();
         String DeptName = DeptSpinner.getSelectedItem().toString();
 
 
@@ -338,13 +357,11 @@ public class ProfileActivity extends AppCompatActivity {
             LastName.requestFocus();
             return;
         }
-        if(DeptName.isEmpty()){
-            LastName.setError("Department Name Required");
-            LastName.requestFocus();
+        if(number.isEmpty()){
+            PhoneNumber.setError("Contact Number Required");
+            PhoneNumber.requestFocus();
             return;
         }
-
-
 
         if(BirthDate.isEmpty()){
 
@@ -367,8 +384,9 @@ public class ProfileActivity extends AppCompatActivity {
         current_user.child("Department Name").setValue(DeptName);
         current_user.child("Birthday").setValue(BirthDate);
         current_user.child("Image").setValue(profileImageUrl);
+        current_user.child("Phone Number").setValue(number);
 
-        if(user != null && profileImageUrl != null) {
+        if(user != null && profileImageUrl != null ) {
 
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(name)
