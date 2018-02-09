@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FirebaseAuth</string>
+    <array name="DepartmentName">
+
+        <item>ICE</item>
+        <item>BGE</item>
+        <item>Pharmacy</item>
+        <item>FIMS</item>
+        <item>BBA</item>
+        <item>Economics</item>
+        <item>BLWS</item>
+        <item>Statistics</item>
+        <item>CSTE</item>
+        <item>ESDM</item>
+        <item>A.MATH</item>
+        <item>EEE</item>
+        <item>SE</item>
+        <item>Microbiology</item>
+        <item>Biochemistry</item>
+        <item>FTNS</item>
+        <item>Oceanography</item>
+    </array>
+</resources>
