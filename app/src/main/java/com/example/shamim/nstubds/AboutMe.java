@@ -1,13 +1,13 @@
-package com.example.shamim.firebaseauth;
+package com.example.shamim.nstubds;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ShowProfileActivity extends AppCompatActivity {
+public class AboutMe extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_profile);
+        setContentView(R.layout.activity_about_me);
     }
 }

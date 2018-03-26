@@ -1,5 +1,6 @@
-package com.example.shamim.firebaseauth;
+package com.example.shamim.nstubds;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseAuth mAuth;
-    ProgressBar progressBar;
     EditText editTextEmail,editTextPassword;
+    public String check ="0";
+    public  String Email,Password;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword= (EditText) findViewById(R.id.editTextpassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
+
+        Email = getIntent().getStringExtra("email");
+        Password = getIntent().getStringExtra("password");
+
+        String ch = getIntent().getStringExtra("check");
+
+
+            editTextEmail.setText(Email);
+            editTextPassword.setText(Password);
+
+
 
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
         findViewById(R.id.buttonLogin).setOnClickListener(this);
@@ -59,9 +72,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
         if(mAuth.getCurrentUser() != null){
-            finish();
-            startActivity(new Intent(this,ProfileActivity.class));
+
+            final FirebaseUser user = mAuth.getCurrentUser();
+
+            if(user.isEmailVerified()){
+                finish();
+                startActivity(new Intent(this,MenuActivity.class));
+            }
+
         }
+
     }
 
     private void userLogin() {
@@ -94,19 +114,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        progressDialog = ProgressDialog.show(MainActivity.this,null,"Logging in...",false,false);
 
 
          mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
              @Override
              public void onComplete(@NonNull Task<AuthResult> task) {
-                 progressBar.setVisibility(View.GONE);
+                 progressDialog.dismiss();
 
                  if(task.isSuccessful()){
-                     finish();
-                     Intent intent = new Intent(MainActivity.this, ShowProfileActivity.class);
+                    // finish();
+                     checkEmailVerification();
+                   //  Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                      //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                     startActivity(intent);
+                   //  startActivity(intent);
 
                  }
                  else{
@@ -115,5 +136,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  }
              }
          });
+    }
+
+    private void checkEmailVerification() {
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user.isEmailVerified()){
+            finish();
+            if (user.getDisplayName()==null) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Please verify your Email", Toast.LENGTH_LONG).show();
+        }
     }
 }

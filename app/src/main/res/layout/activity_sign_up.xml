@@ -5,71 +5,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.shamim.firebaseauth.MainActivity">
+    android:background="@drawable/nstupic3"
+    tools:context="com.example.shamim.nstubds.SignUpActivity">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/app_signup5" />
-
-    </RelativeLayout>
 
 
     <RelativeLayout
+        android:layout_marginBottom="40dp"
+        android:gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/gray">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:orientation="vertical"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingRight="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <EditText
                 android:id="@+id/editTextEmailSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+                android:textColorHint="@android:color/white"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
+                android:textSize="20sp"
                 android:layout_marginBottom="10dp"
-                android:textColorHint="@color/gray"
-                android:background="@drawable/round_edit"/>
+                android:textColor="@android:color/white"
+                android:background="@drawable/edit_text5"/>
 
-
-            <EditText
-                android:id="@+id/editTextpasswordSignUp"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:padding="10dp"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:background="@drawable/round_edit"/>
+                android:layout_marginBottom="10dp"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false"
+                app:passwordToggleTint="@android:color/white">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextpasswordSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:hint="password"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:inputType="numberPassword"
+                    android:background="@drawable/edit_text5"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false"
+                app:passwordToggleTint="@android:color/white">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextRepasswordSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:hint="@string/repassword"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:inputType="numberPassword"
+                    android:background="@drawable/edit_text5"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
 
             <Button
                 android:id="@+id/buttonSignUp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/round_button"
-                android:text="Sign Up"
-                android:textColor="@color/gray"
+                android:background="@drawable/button_selector1"
+                android:text="Register"
                 android:textAllCaps="false"
-                />
+                android:textColor="@color/endBlue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewLogin"
@@ -79,18 +110,11 @@
                 android:text="Already have an account? Login"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textColor="#FFFF"/>
+                android:textColor="@android:color/white"/>
 
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
 
     </RelativeLayout>
 

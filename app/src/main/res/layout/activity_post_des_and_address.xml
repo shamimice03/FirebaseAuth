@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shamim.nstubds.PostDesAndAddress">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/descriptionToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:layout_gravity="center"
+        app:navigationIcon="@drawable/back_icon"
+        />
+
+    <TextView
+        android:layout_below="@id/descriptionToolbar"
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="Address"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:layout_below="@+id/text"
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:hint="Add Hospital Location"
+        android:background="@drawable/spinner_background"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:drawableRight="@drawable/ic_add_location_black_24dp"
+       />
+
+    <TextView
+    android:layout_below="@id/address"
+    android:id="@+id/descriptionText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="10dp"
+    android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+    android:text="Description"
+    android:textColor="@android:color/black"
+        />
+
+    <EditText
+
+        android:layout_below="@+id/descriptionText"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Enter Description about patient.\nN.B.(You can use extra phone number here,If you want.)"
+        android:background="@drawable/spinner_background"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        />
+
+    <Button
+        android:id="@+id/Post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/greyLight"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:text="Post"
+        android:background="@drawable/button_selector"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        />
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.shamim.firebaseauth;
+package com.example.shamim.nstubds;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.shamim.firebaseauth", appContext.getPackageName());
+        assertEquals("com.example.shamim.nstubds", appContext.getPackageName());
     }
 }

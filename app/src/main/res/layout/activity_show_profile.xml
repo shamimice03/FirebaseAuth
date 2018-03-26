@@ -1,38 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/nstupic6"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:orientation="vertical">
+
+
+
+
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/showtoolbar"
+            android:background="@color/endBlue"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:navigationIcon="@drawable/back_icon"
+            android:elevation="20dp"/>
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
+
+
+
+
+
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="1dp"
         android:layout_weight="1">
         
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/gradientbackground"
+            android:layout_height="250dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_marginTop="35dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/showImage"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/myself"
+                android:src="@drawable/profile_placeholder"
                 />
 
             <TextView
+                android:id="@+id/showName"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mohammed Shamim"
+                android:text="---------------"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold"/>
@@ -40,15 +68,19 @@
         </LinearLayout>
         
         <android.support.v7.widget.CardView
-            android:layout_width="320dp"
-            android:layout_height="100dp"
+            app:cardCornerRadius="10dp"
+            android:background="@drawable/border"
+            app:cardBackgroundColor="@color/fui_buttonShadow"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:paddingBottom="5dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="240dp">
+            android:layout_marginTop="180dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="2"
+                android:weightSum="1"
                 android:orientation="horizontal">
 
 
@@ -60,44 +92,30 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/bloodtext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Blood Group"
+                        android:textSize="20dp"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textColor="@android:color/white"
+                    />
 
                     <TextView
+                        android:id="@+id/showBlood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="A+"
+                        android:text="----"
+                        android:padding="10dp"
                         android:textSize="20sp"
-                        android:paddingTop="10dp"
                         android:textStyle="bold"
-                        android:textColor="@color/starBlue"/>
+                        android:paddingBottom="5dp"
+                        android:background="@drawable/border4"
+                        android:textColor="@android:color/white"/>
 
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Donors"
-                        android:textStyle="bold"
-                        android:textSize="20sp"/>
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/search"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -108,36 +126,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/greyLight"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text6"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp">
 
             <ImageView
+                android:id="@+id/imageView3"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_school_black_24dp"/>
+                android:src="@drawable/ic_school_black_24dp" />
 
             <TextView
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+                android:id="@+id/showDept"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textStyle="bold"
-                android:text="ICE"/>
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="------------"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text6"
             android:orientation="horizontal">
 
             <ImageView
@@ -146,19 +175,29 @@
                 android:src="@drawable/ic_email_black_24dp"/>
 
             <TextView
+                android:paddingLeft="10dp"
+                android:id="@+id/showEmail"
                 android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
+                android:layout_marginRight="40dp"
+
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold"
-                android:text="shamimice03@gmail.com"/>
+                android:textColor="@android:color/white"
+                android:text="------------"/>
 
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/edit_text6"
             android:orientation="horizontal">
 
             <ImageView
@@ -167,38 +206,49 @@
                 android:src="@drawable/ic_call_black_24dp"/>
 
             <TextView
+                android:paddingLeft="10dp"
+                android:id="@+id/showPhoneNumber"
                 android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
+
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold"
-                android:text="+8801688705595"/>
+                android:textColor="@android:color/white"
+                android:text="------------"/>
 
         </LinearLayout>
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/button_selector1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_update_black_24dp"/>
+
+        <TextView
+            android:id="@+id/showTextView"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_update_black_24dp"/>
-
-            <TextView
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textStyle="bold"
-                android:text="Update Profile"/>
-
-        </LinearLayout>
-
+            android:paddingLeft="30dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textColor="@color/endBlue"
+            android:text="Update Profile"/>
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.example.shamim.firebaseauth;
+package com.example.shamim.nstubds;
 
 import org.junit.Test;
 

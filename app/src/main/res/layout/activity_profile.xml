@@ -1,178 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tap on camera to choose profile photo"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textAlignment="center"
-        android:padding="5dp"/>
+        android:background="@drawable/gradientbackground"
+        android:layout_gravity="center"
+        app:navigationIcon="@drawable/back_icon"
+        />
 
 
   <RelativeLayout
-      android:layout_width="match_parent"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginLeft="10dp"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content">
+
+      <TextView
+          android:id="@+id/textView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="choose profile photo"
+          android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+          android:layout_marginTop="15dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginStart="20dp"
+          android:layout_centerVertical="true"
+          android:layout_centerHorizontal="true"
+          android:layout_toRightOf="@+id/imageViewCamera"
+          android:layout_toEndOf="@+id/imageViewCamera" />
 
 
       <ImageView
-          android:layout_centerVertical="true"
-          android:layout_centerHorizontal="true"
           android:id="@+id/imageViewCamera"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
-          android:background="@drawable/app_camera4"
-          android:layout_margin="10dp"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:background="@drawable/profile_icon"
           android:scaleType="centerCrop"
-          />
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true" />
 
       <ProgressBar
           android:id="@+id/progressBarProfile"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
           android:layout_centerVertical="true"
-          android:visibility="gone"
-          />
+          android:layout_alignRight="@+id/imageViewCamera"
+          android:layout_alignEnd="@+id/imageViewCamera"
+          android:layout_marginRight="12dp"
+          android:layout_marginEnd="12dp"
+          android:visibility="gone"/>
 
   </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@android:color/black"
+        android:text="Username : "/>
     <EditText
         android:id="@+id/editTextDisplayName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Display name"
-        android:background="@drawable/round_edit2"/>
+        android:hint="Username"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
+        android:background="@drawable/edit_text4"/>
 
-    <EditText
-        android:id="@+id/firstName"
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="First Name : "
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:ems="7"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:background="@drawable/edit_text4"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Last Name : "
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="8"
+                android:hint="Last name"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:background="@drawable/edit_text4"/>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="First name"
-        android:background="@drawable/round_edit2"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:text="Date Of Birth : "
+        android:textColor="@android:color/black" />
 
     <EditText
-        android:id="@+id/lastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Last name"
-        android:background="@drawable/round_edit2"/>
 
-    <EditText
         android:id="@+id/Birthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Birthday"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:layout_margin="10dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="5dp"
-        android:background="@drawable/round_edit"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
+        android:inputType="none"
+        android:background="@drawable/edit_text4"
         />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-    <TextView
-        android:id="@+id/deptName"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Department Name :"
-        android:textColor="#000"
-        android:paddingRight="20dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:background="@drawable/text_view_background"/>
-    <Spinner
-        android:id="@+id/deptSpinner"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/deptName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Department Name : "
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/black" />
+            <Spinner
+                android:id="@+id/deptSpinner"
+                android:layout_width="154dp"
+                android:layout_height="match_parent"
+                android:entries="@array/DepartmentName"
+                android:background="@drawable/edit_text4"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:spinnerMode="dialog"
+                >
+            </Spinner>
+
+            <TextView
+                android:id="@+id/deptErrorText"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Department name required"
+                android:textColor="@color/red"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:visibility="gone"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/BloodGroupText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Group : "
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/black"
+                />
+
+            <Spinner
+                android:id="@+id/bloodGroupSpinner"
+                android:layout_width="168dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text4"
+                android:entries="@array/BloodGroup"
+                android:padding="5dp"
+                android:spinnerMode="dialog"></Spinner>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/bloodErrorText"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood group required"
+                android:textColor="@color/red"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:visibility="gone"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/DepartmentName">
-    </Spinner>
-
-</LinearLayout>
-
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Contact Number : "
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:hint="Contact Number"
-        android:background="@drawable/round_edit2"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
+        android:background="@drawable/edit_text4"
+       />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:id="@+id/verification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email Verified"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/text_view_background"
-            />
-
-        <CheckBox
-            android:id="@+id/checking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:visibility="gone"
-            android:clickable="false"
-            android:pointerIcon="alias"/>
-
-    </LinearLayout>
-
-
-
-    <ProgressBar
-        android:id="@+id/progressBarbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        />
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/round_button2"
-        android:layout_marginTop="20dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/button_selector"
         android:text="Save"
         android:textColor="#ffff"
         android:textAllCaps="false"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
         />
 
 

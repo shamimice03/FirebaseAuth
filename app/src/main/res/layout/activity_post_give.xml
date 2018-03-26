@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shamim.nstubds.PostGive">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/postGivetoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradientbackground"
+        android:layout_gravity="center"
+        app:navigationIcon="@drawable/back_icon"
+        />
+
+    <LinearLayout
+        android:id="@+id/donation"
+        android:layout_below="@+id/postGivetoolbar"
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/bbtext"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Group"
+                android:textColor="@android:color/black"/>
+
+            <Spinner
+                android:id="@+id/bloodSelect"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:entries="@array/BloodGroup"
+                android:background="@drawable/spinner_background"
+                android:spinnerMode="dialog">
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Units Required"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/bloodUnit"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:hint="Enter Blood Units"
+                android:textSize="16sp"
+                android:background="@drawable/spinner_background"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+     <TextView
+
+         android:layout_marginTop="20dp"
+         android:id="@+id/Pinfo"
+         android:layout_marginLeft="10dp"
+         android:layout_below="@+id/donation"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="presonal Details"
+         android:textSize="14sp"
+         android:textColor="@android:color/black"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/Pinfo"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGrey"/>
+
+    <LinearLayout
+        android:id="@+id/personal"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/view"
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/first"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/PostFirstName"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:hint="Enter First Name"
+                android:background="@drawable/spinner_background"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/PostLastName"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:hint="Enter Last Name"
+                android:background="@drawable/spinner_background"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contactNum"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/personal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Number"/>
+
+
+
+    <RelativeLayout
+        android:id="@+id/contactLayout"
+        android:layout_below="@+id/contactNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+            <com.rilixtech.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/spinner_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        <EditText
+            android:layout_below="@id/ccp"
+            android:id="@+id/phone_number_edtt"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Phone Number"
+            android:background="@drawable/spinner_background"
+             />
+
+
+        <Button
+            android:id="@+id/sendVerificationCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_number_edtt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_button2"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Send Verification Code"
+            android:textAllCaps="false"
+            android:textColor="@color/greyLight"
+            android:visibility="visible"
+
+            />
+
+
+
+
+        </RelativeLayout>
+
+
+           <Button
+               android:id="@+id/submitPost"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/greyLight"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="15dp"
+               android:paddingTop="10dp"
+               android:paddingLeft="10dp"
+               android:paddingBottom="10dp"
+               android:paddingRight="10dp"
+               android:text="Submit"
+               android:background="@drawable/round_button2"
+               android:layout_alignParentBottom="true"
+               android:visibility="visible"
+          />
+
+
+
+
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
-package com.example.shamim.firebaseauth;
+package com.example.shamim.nstubds;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -11,13 +12,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CursorAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,14 +40,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Calendar;
-
-import static com.example.shamim.firebaseauth.R.array.DepartmentName;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -62,10 +54,10 @@ public class ProfileActivity extends AppCompatActivity {
     Button button;
     Uri uriProfileImage;
     ProgressBar progressbar,progressbarButton;
+    ProgressDialog progressDialog;
     String profileImageUrl=null;
-    TextView textView;
-    CheckBox checkbox;
-    Spinner DeptSpinner;
+    TextView bloodError,deptError;
+    Spinner DeptSpinner,BloodSpinner;
 
     public String  BirthDate = null;
 
@@ -83,6 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Profile");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.greyLight));
         setSupportActionBar(toolbar);
 
         displayName = (EditText) findViewById(R.id.editTextDisplayName);
@@ -93,10 +87,13 @@ public class ProfileActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageViewCamera);
         button = (Button) findViewById(R.id.buttonSave);
         progressbar = (ProgressBar) findViewById(R.id.progressBarProfile);
-        progressbarButton = (ProgressBar) findViewById(R.id.progressBarbutton);
-        textView = (TextView) findViewById(R.id.verification);
-        checkbox = (CheckBox) findViewById(R.id.checking);
-        DeptSpinner = (Spinner)  findViewById(R.id.deptSpinner);
+        bloodError = (TextView) findViewById(R.id.bloodErrorText);
+        deptError = (TextView) findViewById(R.id.deptErrorText);
+        DeptSpinner = (Spinner) findViewById(R.id.deptSpinner);
+        BloodSpinner = (Spinner) findViewById(R.id.bloodGroupSpinner);
+
+        DateOfBirth.setFocusable(false);
+        DateOfBirth.setClickable(true);
 
 
 
@@ -105,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-       // loadUserInfo();
+        loadUserInfo();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +151,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener(){
 
-
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
@@ -183,12 +179,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         final FirebaseUser user = mAuth.getCurrentUser();
         String  user_id = mAuth.getCurrentUser().getUid();
-        DatabaseReference FirstNameRef = mdatabase.child(user_id).child("First Name");
-        DatabaseReference ImageRef = mdatabase.child(user_id).child("Image");
-        DatabaseReference LastNameRef = mdatabase.child(user_id).child("Last Name");
-        DatabaseReference DeptNameRef= mdatabase.child(user_id).child("Department Name");
-        DatabaseReference BirthDayRef= mdatabase.child(user_id).child("Birthday");
-        final DatabaseReference PhoneNumRef= mdatabase.child(user_id).child("Phone Number");
+        DatabaseReference FirstNameRef = mdatabase.child(user_id).child("first_name");
+        DatabaseReference ImageRef = mdatabase.child(user_id).child("image");
+        DatabaseReference LastNameRef = mdatabase.child(user_id).child("last_name");
+        DatabaseReference DeptNameRef= mdatabase.child(user_id).child("department_name");
+        DatabaseReference BirthDayRef= mdatabase.child(user_id).child("birthday");
+        DatabaseReference BloodGroupRef=mdatabase.child(user_id).child("blood_group");
+        final DatabaseReference PhoneNumRef= mdatabase.child(user_id).child("phone_number");
 
         if(user != null){
 
@@ -267,8 +264,28 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
 
+            // Blood Group Load
+            BloodGroupRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-         //BirthDay Load
+                    String blood_group = dataSnapshot.getValue(String.class);
+
+                    String[] Blood_group = getResources().getStringArray(R.array.BloodGroup);
+                    BloodSpinner.setSelection(Arrays.asList(Blood_group).indexOf(blood_group));
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+            //BirthDay Load
             BirthDayRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -300,31 +317,6 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
 
-
-
-            if(user.isEmailVerified()){
-                checkbox.setVisibility(View.VISIBLE);
-                checkbox.setChecked(true);
-            }
-            else {
-                textView.setText("Email Verification");
-                checkbox.setVisibility(View.VISIBLE);
-                checkbox.setChecked(false);
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                                Toast.makeText(ProfileActivity.this, "Verification Email send", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-            }
-
         }
 
     }
@@ -332,15 +324,25 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void SaveUserInfo() {
 
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+
+
         String name = displayName.getText().toString().trim();
         String Fstname = FirstName.getText().toString().trim();
         String Lstname = LastName.getText().toString().trim();
         String number = PhoneNumber.getText().toString().trim();
         String DeptName = DeptSpinner.getSelectedItem().toString();
+        String Bday = DateOfBirth.getText().toString().trim();
+        String Blood = BloodSpinner.getSelectedItem().toString();
+        String fullName= String.format("%s %s",Fstname,Lstname);
 
+        final String check ="Select One";
 
+        deptError.setVisibility(View.GONE);
+        bloodError.setVisibility(View.GONE);
 
-        progressbarButton.setVisibility(View.VISIBLE);
 
         if(name.isEmpty()){
             displayName.setError("Name Required");
@@ -363,10 +365,19 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if(BirthDate.isEmpty()){
+        if(Bday.isEmpty()){
 
             DateOfBirth.setError("Birthday Required");
             DateOfBirth.requestFocus();
+            return;
+        }
+        if(DeptName.equals(check)){
+            deptError.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        if(Blood.equals(check)){
+            bloodError.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -374,17 +385,28 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        deptError.setVisibility(View.GONE);
+        bloodError.setVisibility(View.GONE);
+
+        progressDialog = ProgressDialog.show(ProfileActivity.this,"Saving Data","Please wait...",false,false);
+
 
         String  user_id = mAuth.getCurrentUser().getUid();
         DatabaseReference current_user = mdatabase.child(user_id);
 
-        current_user.child("First Name").setValue(Fstname);
-        current_user.child("Last Name").setValue(Lstname);
-        current_user.child("Department Name").setValue(DeptName);
-        current_user.child("Birthday").setValue(BirthDate);
-        current_user.child("Image").setValue(profileImageUrl);
-        current_user.child("Phone Number").setValue(number);
+        users userModel = new users(Fstname,Blood,profileImageUrl,Lstname,DeptName,Bday,number,fullName);
+
+        current_user.setValue(userModel);
+
+        /*
+        current_user.child("first_name").setValue(Fstname);
+        current_user.child("last_name").setValue(Lstname);
+        current_user.child("department_name").setValue(DeptName);
+        current_user.child("birthday").setValue(Bday);
+        current_user.child("image").setValue(profileImageUrl);
+        current_user.child("phone_number").setValue(number);
+        current_user.child("blood_group").setValue(Blood);
+        */
 
         if(user != null && profileImageUrl != null ) {
 
@@ -396,14 +418,22 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
 
-                    progressbarButton.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                     if(task.isSuccessful()){
                         Toast.makeText(ProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ProfileActivity.this,MenuActivity.class));
+                        finish();
                     }
                 }
             });
 
         }
+        else{
+            progressDialog.dismiss();
+            Toast.makeText(ProfileActivity.this, "Please Upload a Profile picture", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
 
@@ -463,32 +493,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return  true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-
-            case R.id.menuLogout:
-
-                FirebaseAuth.getInstance().signOut();
-                finish();
-                startActivity(new Intent(this,MainActivity.class));
-
-                break;
-        }
-
-
-        return  true;
-    }
 
     private void ShowImageChooser(){
 
