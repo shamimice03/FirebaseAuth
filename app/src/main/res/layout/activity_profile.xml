@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nstupic1"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
 
 
 <LinearLayout
@@ -14,73 +19,64 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
+        android:background="@color/endBlue"
         android:layout_gravity="center"
         app:navigationIcon="@drawable/back_icon"
         />
 
 
-  <RelativeLayout
-      android:layout_marginTop="8dp"
-      android:layout_marginBottom="8dp"
-      android:layout_marginLeft="10dp"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">
-
-      <TextView
-          android:id="@+id/textView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="choose profile photo"
-          android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-          android:layout_marginTop="15dp"
-          android:layout_marginLeft="20dp"
-          android:layout_marginStart="20dp"
-          android:layout_centerVertical="true"
-          android:layout_centerHorizontal="true"
-          android:layout_toRightOf="@+id/imageViewCamera"
-          android:layout_toEndOf="@+id/imageViewCamera" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp">
 
 
-      <ImageView
-          android:id="@+id/imageViewCamera"
-          android:layout_width="80dp"
-          android:layout_height="80dp"
-          android:background="@drawable/profile_icon"
-          android:scaleType="centerCrop"
-          android:layout_alignParentBottom="true"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true" />
 
-      <ProgressBar
-          android:id="@+id/progressBarProfile"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerVertical="true"
-          android:layout_alignRight="@+id/imageViewCamera"
-          android:layout_alignEnd="@+id/imageViewCamera"
-          android:layout_marginRight="12dp"
-          android:layout_marginEnd="12dp"
-          android:visibility="gone"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewCamera"
+            android:layout_marginTop="15dp"
+            android:layout_centerInParent="true"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/profile_icon7"
+            />
 
-  </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:theme="@style/AppTheme.WhiteAccent"
+            android:visibility="gone"
+
+            />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textColor="@android:color/black"
-        android:text="Username : "/>
+        android:textColor="@android:color/white"
+        android:text="Username : "
+        android:textStyle="bold" />
     <EditText
         android:id="@+id/editTextDisplayName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
+        android:textColor="@android:color/white"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:padding="5dp"
-        android:background="@drawable/edit_text4"/>
+        android:background="@drawable/edit_text7"/>
 
     <LinearLayout
         android:layout_marginTop="8dp"
@@ -99,8 +95,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:textStyle="bold"
                 android:text="First Name : "
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/white"/>
 
             <EditText
                 android:id="@+id/firstName"
@@ -111,7 +108,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:background="@drawable/edit_text4"/>
+                android:textColor="@android:color/white"
+                android:background="@drawable/edit_text7"/>
 
         </LinearLayout>
 
@@ -124,20 +122,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Last Name : "
-                android:textColor="@android:color/black"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
 
             <EditText
                 android:id="@+id/lastName"
-                android:layout_width="match_parent"
+                android:layout_width="176dp"
                 android:layout_height="match_parent"
                 android:ems="8"
+                android:textColorHint="@android:color/white"
                 android:hint="Last name"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
-                android:background="@drawable/edit_text4"/>
+                android:textColor="@android:color/white"
+                android:background="@drawable/edit_text7"/>
 
         </LinearLayout>
 
@@ -156,7 +156,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
         android:text="Date Of Birth : "
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
 
     <EditText
 
@@ -164,40 +165,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Birthday"
+        android:textColor="@android:color/white"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:padding="5dp"
         android:inputType="none"
-        android:background="@drawable/edit_text4"
+        android:background="@drawable/edit_text7"
         />
 
     <LinearLayout
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-
                 android:id="@+id/deptName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Department Name : "
                 android:layout_marginLeft="10dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
             <Spinner
+                android:theme="@style/spinnerTheme1"
                 android:id="@+id/deptSpinner"
                 android:layout_width="154dp"
                 android:layout_height="match_parent"
                 android:entries="@array/DepartmentName"
-                android:background="@drawable/edit_text4"
+                android:background="@drawable/edit_text7"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
                 android:layout_marginLeft="10dp"
@@ -226,29 +229,29 @@
 
         <LinearLayout
 
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/BloodGroupText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Blood Group : "
-                android:layout_marginLeft="10dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 />
 
             <Spinner
+                android:theme="@style/spinnerTheme1"
                 android:id="@+id/bloodGroupSpinner"
-                android:layout_width="168dp"
+                android:layout_width="176dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/edit_text4"
+                android:background="@drawable/edit_text7"
                 android:entries="@array/BloodGroup"
                 android:padding="5dp"
-                android:spinnerMode="dialog"></Spinner>
+                android:spinnerMode="dialog"/>
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -278,7 +281,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Contact Number : "
-        android:textColor="@android:color/black"/>
+        android:textStyle="bold"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -288,25 +292,31 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:padding="5dp"
-        android:background="@drawable/edit_text4"
+        android:textColor="@android:color/white"
+        android:background="@drawable/edit_text7"
        />
 
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_gravity="bottom"
-        android:background="@drawable/button_selector"
+        android:background="@drawable/button_selector1"
         android:text="Save"
-        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:textColor="@color/endBlue"
         android:textAllCaps="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         />
 
 
 </LinearLayout>
+
+
 
 </ScrollView>

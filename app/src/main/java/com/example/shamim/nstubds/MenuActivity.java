@@ -1,16 +1,30 @@
 package com.example.shamim.nstubds;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity {
 
     GridLayout Mygrid;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+    NavigationView navigationView;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +34,49 @@ public class MenuActivity extends AppCompatActivity {
         Mygrid = (GridLayout) findViewById(R.id.myGrid);
         setSingleEvent(Mygrid);
 
+        setUpToolbar();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.showtoolbarMenu);
-        //toolbar.setTitle("NSTU BDS");
-       // toolbar.setTitleTextColor(getResources().getColor(R.color.greyLight));
-        setSupportActionBar(toolbar);
+        navigationView = (NavigationView) findViewById(R.id.navView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.Settings:
+                        Toast.makeText(MenuActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.Rate:
+                        Toast.makeText(MenuActivity.this, "Rate", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.logOut:
+                        Toast.makeText(MenuActivity.this, "Logging Out ", Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        finish();
+                        startActivity(new Intent(MenuActivity.this,MainActivity.class));
+                        finish();
+                        break;
+                }
+
+                return false;
+            }
+        });
+
     }
+
+    private void  setUpToolbar(){
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.showtoolbarMenu);
+        setSupportActionBar(toolbar);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.Open,R.string.Close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
+
 
     private void setSingleEvent(GridLayout mygrid) {
 

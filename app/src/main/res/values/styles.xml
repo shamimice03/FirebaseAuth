@@ -22,4 +22,19 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="spinnerTheme1" parent="android:Theme">
+        <item name="android:textColor">@color/endBlue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">@color/endBlue</item> <!-- Whatever color you want-->
+    </style>
+
+    <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
 </resources>
