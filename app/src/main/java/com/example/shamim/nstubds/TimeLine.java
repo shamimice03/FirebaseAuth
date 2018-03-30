@@ -49,7 +49,7 @@ public class TimeLine extends AppCompatActivity {
                         replaceFragment(notificationFragment);
                         return  true;
                     case R.id.addPostButton:
-                        startActivity(new Intent(TimeLine.this,MenuActivity.class));
+                        startActivity(new Intent(TimeLine.this,PostGive.class));
                         finish();
                         return  true;
 

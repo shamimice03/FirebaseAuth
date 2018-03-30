@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/nstupic1"
     tools:context="com.example.shamim.nstubds.TipsForDonors">
 
 
@@ -12,10 +13,15 @@
         android:id="@+id/tipstoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:background="@color/endBlue"
         android:layout_gravity="center"
         app:navigationIcon="@drawable/back_icon"
         />
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
 
 
@@ -29,7 +35,6 @@
         android:layout_height="match_parent"
         android:dividerHeight="5dp"
         android:groupIndicator="@drawable/custom_indicator"
-        android:background="@drawable/viewimage2"
    />
 
 </LinearLayout>

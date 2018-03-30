@@ -11,10 +11,16 @@
         android:id="@+id/timelinetoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
+        android:background="@color/endBlue"
         app:navigationIcon="@drawable/back_icon">
 
     </android.support.v7.widget.Toolbar>
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_below="@id/timelinetoolbar"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
     <android.support.design.widget.BottomNavigationView
         android:background="@color/lightGrey"

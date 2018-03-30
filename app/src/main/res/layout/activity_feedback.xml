@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nstupic3"
     tools:context="com.example.shamim.nstubds.Feedback">
 
 
@@ -11,9 +12,16 @@
         android:id="@+id/feedbooktoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
+        android:background="@color/endBlue"
         app:navigationIcon="@drawable/back_icon">
     </android.support.v7.widget.Toolbar>
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_below="@id/feedbooktoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
+
 
     <android.support.v7.widget.CardView
         android:id="@+id/mainPart"
@@ -23,6 +31,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/fui_buttonShadow"
         android:layout_below="@+id/feedbooktoolbar">
 
         <RelativeLayout
@@ -39,60 +48,34 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
+                android:textColor="@color/greyLight"
                 android:hint="Type Your Feedback Here..."
-                android:background="@drawable/border"
+                android:textColorHint="@color/greyLight"
+                android:background="@drawable/edit_text7"
                 />
 
             <Button
                 android:id="@+id/sendFeedbook"
                 android:text="Submit"
-                android:textColor="@android:color/white"
-                android:background="@drawable/button_selector"
-                android:layout_marginTop="10dp"
+                android:textColor="@color/endBlue"
+                android:background="@drawable/button_selector1"
+                android:layout_marginTop="20dp"
                 android:layout_below="@+id/feedbackdesc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="35dp"
                 />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_below="@+id/mainPart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardElevation="10dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
-
-            <TextView
-                android:id="@+id/info1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SEND TO:"
-                android:textColor="@android:color/black"/>
-
-            <TextView
-                android:id="@+id/info2"
-                android:layout_below="@id/info1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="shamimice03@gmail.com"
-                android:textColor="@android:color/holo_red_dark"/>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 
 
 
 
-    </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+

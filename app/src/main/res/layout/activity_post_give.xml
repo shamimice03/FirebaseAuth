@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nstupic6"
     tools:context="com.example.shamim.nstubds.PostGive">
 
 
@@ -11,10 +12,16 @@
         android:id="@+id/postGivetoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
+        android:background="@color/endBlue"
         android:layout_gravity="center"
         app:navigationIcon="@drawable/back_icon"
         />
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_below="@id/postGivetoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
     <LinearLayout
         android:id="@+id/donation"
@@ -32,14 +39,16 @@
             android:layout_weight="1">
 
             <TextView
+
                 android:id="@+id/bbtext"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blood Group"
-                android:textColor="@android:color/black"/>
+                android:text="Blood Group : "
+                android:textColor="@color/greyLight"/>
 
             <Spinner
+                android:theme="@style/spinnerTheme1"
                 android:id="@+id/bloodSelect"
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
@@ -49,7 +58,7 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
                 android:entries="@array/BloodGroup"
-                android:background="@drawable/spinner_background"
+                android:background="@drawable/edit_text7"
                 android:spinnerMode="dialog">
             </Spinner>
 
@@ -63,11 +72,12 @@
             android:layout_weight="1">
 
             <TextView
+
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blood Units Required"
-                android:textColor="@android:color/black"/>
+                android:text="Blood Units Required : "
+                android:textColor="@color/greyLight"/>
 
             <EditText
                 android:id="@+id/bloodUnit"
@@ -79,8 +89,10 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
                 android:hint="Enter Blood Units"
+                android:inputType="number"
                 android:textSize="16sp"
-                android:background="@drawable/spinner_background"
+                android:textColor="@color/greyLight"
+                android:background="@drawable/edit_text7"
                 />
 
         </LinearLayout>
@@ -99,7 +111,7 @@
          android:layout_height="wrap_content"
          android:text="presonal Details"
          android:textSize="14sp"
-         android:textColor="@android:color/black"/>
+         android:textColor="@color/greyLight"/>
 
     <View
         android:id="@+id/view"
@@ -132,8 +144,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="First Name"
-                android:textColor="@android:color/black"/>
+                android:text="First Name : "
+                android:textColor="@color/greyLight"/>
 
             <EditText
                 android:id="@+id/PostFirstName"
@@ -145,7 +157,8 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
                 android:hint="Enter First Name"
-                android:background="@drawable/spinner_background"
+                android:textColor="@color/greyLight"
+                android:background="@drawable/edit_text7"
                 />
 
 
@@ -162,8 +175,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last Name"
-                android:textColor="@android:color/black"/>
+                android:text="Last Name : "
+                android:textColor="@color/greyLight"/>
 
             <EditText
                 android:id="@+id/PostLastName"
@@ -174,8 +187,9 @@
                 android:paddingLeft="10dp"
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
+                android:textColor="@color/greyLight"
                 android:hint="Enter Last Name"
-                android:background="@drawable/spinner_background"
+                android:background="@drawable/edit_text7"
                 />
 
         </LinearLayout>
@@ -187,7 +201,7 @@
         android:id="@+id/contactNum"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/greyLight"
         android:layout_below="@id/personal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -211,7 +225,8 @@
                 android:paddingLeft="10dp"
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/spinner_background"
+                app:ccp_textColor="@color/greyLight"
+                android:background="@drawable/edit_text7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
@@ -229,27 +244,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Phone Number"
-            android:background="@drawable/spinner_background"
+            android:textColor="@color/greyLight"
+            android:inputType="number"
+            android:background="@drawable/edit_text7"
              />
 
 
         <Button
             android:id="@+id/sendVerificationCode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/phone_number_edtt"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/round_button2"
+            android:background="@drawable/button_selector1"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
             android:text="Send Verification Code"
             android:textAllCaps="false"
-            android:textColor="@color/greyLight"
+            android:textColor="@color/endBlue"
             android:visibility="visible"
 
             />
@@ -263,8 +280,8 @@
            <Button
                android:id="@+id/submitPost"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:textColor="@color/greyLight"
+               android:layout_height="40dp"
+               android:textColor="@color/endBlue"
                android:layout_marginTop="5dp"
                android:layout_marginLeft="10dp"
                android:layout_marginRight="10dp"
@@ -274,7 +291,8 @@
                android:paddingBottom="10dp"
                android:paddingRight="10dp"
                android:text="Submit"
-               android:background="@drawable/round_button2"
+               android:textAllCaps="false"
+               android:background="@drawable/button_selector1"
                android:layout_alignParentBottom="true"
                android:visibility="visible"
           />

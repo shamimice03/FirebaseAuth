@@ -10,18 +10,18 @@ import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private TextView textView;
+    private ImageView imageView;
    // private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        textView = (TextView) findViewById(R.id.splashtext);
+        imageView = (ImageView) findViewById(R.id.splashLogo);
         //imageView =(ImageView) findViewById(R.id.splashimage);
 
         Animation myanimantion = AnimationUtils.loadAnimation(this,R.anim.mytransition);
-        textView.startAnimation(myanimantion);
+        imageView.startAnimation(myanimantion);
         //imageView.startAnimation(myanimantion);
 
         final Intent i = new Intent(this,MainActivity.class);

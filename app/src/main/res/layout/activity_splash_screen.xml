@@ -4,33 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/nstupic"
+
     tools:context="com.example.shamim.nstubds.SplashScreen">
 
     <LinearLayout
-        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top"
+        android:gravity="center"
+        android:background="@color/greyLight"
         android:weightSum="1">
 
 
-
-        <TextView
-            android:id="@+id/splashtext"
+        <ImageView
+            android:id="@+id/splashLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Welcome To\nNSTU  Blood Donotion Society"
             android:textStyle="bold"
             android:textSize="25sp"
+            android:background="@drawable/my_logo"
             android:textColor="@color/gray"
-            android:layout_weight="0.06" />
+            />
+
 
     </LinearLayout>
 
     <RelativeLayout
+
         android:layout_marginBottom="10dp"
         android:gravity="bottom"
         android:layout_width="match_parent"
@@ -44,12 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NSTU BDS 1.0"
-            android:textColor="@color/greyLight"
+            android:textColor="@color/gray"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="127dp"
             android:layout_marginEnd="127dp"
-            android:textStyle="italic"/>
+          />
 
     </RelativeLayout>
 

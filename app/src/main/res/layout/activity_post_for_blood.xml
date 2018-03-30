@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradientbackground"
+    android:background="@drawable/nstupic3"
     tools:context="com.example.shamim.nstubds.PostForBlood">
 
     <android.support.v7.widget.Toolbar
@@ -12,9 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/border"
+        android:background="@color/endBlue"
         app:navigationIcon="@drawable/back_icon"
         />
+    <View
+        android:layout_below="@id/posttoolbar"
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/toolbar_dropshadow" />
 
     <RelativeLayout
         android:layout_alignParentTop="false"
@@ -29,10 +35,10 @@
         <Button
             android:id="@+id/postGive"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Post for Emergency Blood"
             android:background="@drawable/round_button"
-            android:textColor="@color/gray"
+            android:textColor="@color/endBlue"
             android:textAllCaps="false"
             android:layout_above="@+id/seePost"
             android:layout_marginBottom="36dp"
@@ -44,10 +50,10 @@
         <Button
             android:id="@+id/seePost"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="See Other's Post"
             android:background="@drawable/round_button"
-            android:textColor="@color/gray"
+            android:textColor="@color/endBlue"
             android:textAllCaps="false"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
