@@ -394,7 +394,7 @@ public class ProfileActivity extends AppCompatActivity {
         String  user_id = mAuth.getCurrentUser().getUid();
         DatabaseReference current_user = mdatabase.child(user_id);
 
-        users userModel = new users(Fstname,Blood,profileImageUrl,Lstname,DeptName,Bday,number,fullName);
+        users userModel = new users(Fstname,Blood,profileImageUrl,Lstname,DeptName,Bday,number,fullName,user_id);
 
         current_user.setValue(userModel);
 

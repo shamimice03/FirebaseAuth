@@ -12,10 +12,16 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,11 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public String check ="0";
     public  String Email,Password;
     ProgressDialog progressDialog;
+    private FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);

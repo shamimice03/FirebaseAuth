@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context="com.example.shamim.nstubds.SendNotification">
+
+    <TextView
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:id="@+id/userid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="userID"/>
+    <EditText
+        android:id="@+id/notification"
+        android:gravity="start"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/userid"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="20dp"
+        android:hint="type Your notification here"
+        android:textColor="@android:color/white"
+        android:background="@drawable/edit_text7"/>
+
+    <Button
+        android:background="@drawable/button_selector1"
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:text="Sumbit"
+        android:textColor="@color/endBlue"
+        android:layout_below="@+id/notification"/>
+
+</RelativeLayout>

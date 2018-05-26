@@ -17,6 +17,8 @@ public class users {
    public String birthday;
    public String phone_number;
 
+   public String userId;
+
    public String getFullName() {
       return fullName;
    }
@@ -85,7 +87,16 @@ public class users {
       this.phone_number = phone_number;
    }
 
-   public users(String first_name, String blood_group, String image, String last_name, String department_name, String birthday, String phone_number, String fullName) {
+   public String getUserId() {
+      return userId;
+   }
+
+   public void setUserId(String userId) {
+      this.userId = userId;
+   }
+
+
+   public users(String first_name, String blood_group, String image, String last_name, String department_name, String birthday, String phone_number, String fullName, String userId) {
       this.first_name = first_name;
       this.blood_group = blood_group;
       this.image = image;
@@ -94,6 +105,7 @@ public class users {
       this.birthday = birthday;
       this.phone_number = phone_number;
       this.fullName=fullName;
+      this.userId=userId;
 
    }
 

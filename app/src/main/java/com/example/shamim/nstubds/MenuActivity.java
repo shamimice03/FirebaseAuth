@@ -15,7 +15,15 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -24,6 +32,9 @@ public class MenuActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
     Toolbar toolbar;
+    private FirebaseFirestore firebaseFirestore;
+    private  FirebaseAuth mAuth;
+    String UserID;
 
 
     @Override
@@ -33,6 +44,10 @@ public class MenuActivity extends AppCompatActivity {
 
         Mygrid = (GridLayout) findViewById(R.id.myGrid);
         setSingleEvent(Mygrid);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        UserID = mAuth.getCurrentUser().getUid();
 
         setUpToolbar();
 
@@ -52,10 +67,11 @@ public class MenuActivity extends AppCompatActivity {
                         Toast.makeText(MenuActivity.this, "Rate", Toast.LENGTH_SHORT).show();
                         break;
 
+
+
                     case R.id.logOut:
                         Toast.makeText(MenuActivity.this, "Logging Out ", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
-                        finish();
                         startActivity(new Intent(MenuActivity.this,MainActivity.class));
                         finish();
                         break;

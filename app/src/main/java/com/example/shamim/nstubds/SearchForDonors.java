@@ -2,6 +2,7 @@ package com.example.shamim.nstubds;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -88,12 +89,27 @@ public class SearchForDonors extends AppCompatActivity {
 
                 ) {
             @Override
-            protected void populateViewHolder(usersviewHolder viewHolder, users model, int position) {
+            protected void populateViewHolder(usersviewHolder viewHolder, final users model, int position) {
 
 
                 viewHolder.setDetails(getApplicationContext(),model.getFirst_name(),model.getLast_name(),model.getBlood_group(),model.getImage()
                 ,model.getDepartment_name(),model.getPhone_number());
+
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(SearchForDonors.this,SendNotification.class);
+                        intent.putExtra("userId",model.getUserId());
+                        startActivity(intent);
+                    }
+                });
             }
+
+
+
+
+
         };
 
         showSearchResult.setAdapter(firebaseRecyclerAdapter);
@@ -108,6 +124,7 @@ public class SearchForDonors extends AppCompatActivity {
 
             mView = itemView;
         }
+
 
         public void setDetails(Context Ctx,String FstName, String LstName, String bloodGrp, String userImage,String Dept, String PhnNum){
 
